@@ -1,0 +1,37 @@
+<% include ../layout/header.ejs %>
+    <!-- Header End -->
+    <div id="maincontainer">
+        <h2 align="center">Tìm Thấy <code style="font-size: 25px; padding: 0 7px 0 7px;"><%= product.length%></code> kết quả cho <b style="color: blue;"><%= key%></b></h2>
+        <b></b>
+        <!-- Featured Product-->
+        <%   cate.forEach(function(ca){ var id = 0; %>
+            <section id="featured" class="row mt40">
+                <div class="container">
+                    <h1 class="heading1"><span class="maintext"> <%= ca.name%> </span><span class="subtext"> See Our Most featured Products</span></h1>
+                    <ul class="thumbnails">
+                        <%  product.forEach(function(pro){ if(id < 8) { if(pro.cateId == ca._id){ id ++ ; %>
+                            <li class="span3">
+                                <a class="prdocutname" href="product.html">
+                                    <%= pro.name %>
+                                </a>
+                                <div class="thumbnail">
+                                    <span class="sale tooltip-test">Sale</span>
+                                    <a href="/chi-tiet/<%= pro.nameKhongDau%>.<%= pro._id%>.<%= pro.cateId%>.html"><img alt="" src="upload/<%= pro.img %>"></a>
+                                    <div class="pricetag">
+                                        <span class="spiral"></span><a href="/add-cart.<%= pro._id %>" class="productcart">ADD TO CART</a>
+                                        <div class="price">
+                                            <div class="pricenew">
+                                                <%= pro.price %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        <% }}})%>
+                    </ul>
+                </div>
+            </section>
+            <% })%>
+            <!-- Latest Product-->
+            <!-- Footer -->
+            <% include ../layout/footer.ejs %>

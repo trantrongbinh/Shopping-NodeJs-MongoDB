@@ -20,7 +20,10 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <!-- fav -->
+     <link href="/TT_Admin/assets/fonts/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owl.theme.default.min.css">
 </head>
 
 <body>
@@ -36,13 +39,49 @@
                             <div class="navbar" id="topnav">
                                 <div class="navbar-inner">
                                     <ul class="nav">
-                                        <li><a class="home active" href="/">Home</a>
-                                            <li>
-                                                <li><a class="shoppingcart" href="/gio-hang.html">Shopping Cart</a>
-                                                </li>
+                                        <li><a class="home active" href="/">Home</a><li>
+                                        <li><a class="shoppingcart" href="/gio-hang.html">Shopping Cart</a></li>
                                     </ul>
                                 </div>
                             </div>
+                        </div>
+                        <style> 
+                        form.search input[type=text] {
+                            padding: 10px;
+                            font-size: 17px;
+                            border: 1px solid grey;
+                            float: left;
+                            width: 75%;
+                            background: #f1f1f1;
+                        }
+
+                        form.search button {
+                            float: right;
+                            width: 17%;
+                            padding: 10px;
+                            background: #2196F3;
+                            color: white;
+                            font-size: 17px;
+                            border: 1px solid grey;
+                            border-left: none;
+                            cursor: pointer;
+                        }
+
+                        form.search button:hover {
+                            background: #0b7dda;
+                        }
+
+                        form.search::after {
+                            content: "";
+                            clear: both;
+                            display: table;
+                        }
+                        </style>
+                        <div class="pull-right" style="margin-top: 15px; margin-right: 20px; ">
+                            <form class="search" action="/ket-qua-search.html" style="margin:auto;max-width:300px" method="POST">
+                              <input type="text" placeholder="Search.." name="key" size="100">
+                              <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
                         </div>
                         <!-- Top Nav End -->
                     </div>

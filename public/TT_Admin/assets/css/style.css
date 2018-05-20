@@ -8185,3 +8185,36 @@ table.dataTable tfoot th select, table.dataTable tfoot td select{
 table.dataTable.display tbody tr:first-child td {
     border-top: 1px solid #eeeeee;
 }
+
+/*image*/
+.thumbnail {
+    position: relative;
+    z-index: 0;
+    width: 70px;
+}
+
+.thumbnail:hover {
+    background-color: transparent;
+    z-index: 50;
+}
+
+.thumbnail span {
+    position: absolute;
+    background-color: white;
+    color: black;
+    border: 1px dashed;
+    padding: 5px;
+    visibility: hidden;
+    text-decoration: none;
+}
+
+.thumbnail span img {
+    border-width: 1;
+    padding: 2px;
+}
+
+.thumbnail:hover span {
+    visibility: visible;
+    top: 0;
+    left: 5vw;
+}

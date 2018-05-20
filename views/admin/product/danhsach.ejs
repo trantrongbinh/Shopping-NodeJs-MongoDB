@@ -49,6 +49,7 @@
                                                     <th>ID</th>
                                                     <th>Name</th>
                                                     <th>Hình</th>
+                                                    <th>Chi tiết</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -58,8 +59,35 @@
                                                 <tr>
                                                     <td><%= id%></td>
                                                     <td><%= item.name%></td>
-                                                    <td> <img src="/upload/<%= item.img%>" width="100px" alt=""></td>
+                                                    <td>
+                                                        <div align="center">
+                                                            <div class="thumbnail" href="#"><img src="/upload/<%= item.img%>" alt="" width="45" height="45">
+                                                                <span><img src="/upload/<%= item.img%>" width="200px" alt=""></span>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div align="center">
+                                                            <button class="btn-primary btn" data-toggle="modal" data-target="#chiTiet<%= id%>"><i class="fa fa-eye" ></i></button>
 
+                                                            <div class="modal" id="chiTiet<%= id%>" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                <div class="modal-dialog animated bounceInDown">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                            <h4 class="modal-title">Chi Tiết Sản Phẩm</h4>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <%= item.des%>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                                     <td>
                                                         <a href="/admin/product/<%= item._id %>/xoa-product.html">Xoá</a> | 
                                                         <a href="/admin/product/<%= item._id %>/sua-product.html">Sửa</a>

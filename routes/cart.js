@@ -3,7 +3,6 @@ var router = express.Router();
 
 var Cart = require('../model/Cart.js');
 
-
 router.get('/', checkAdmin, function(req, res, next) {
   res.redirect('/admin/cart/danh-sach.html');
 });
@@ -14,7 +13,6 @@ router.get('/danh-sach.html', checkAdmin, function(req, res, next) {
 	});
   
 });
-
 
 router.get('/:id/xem-cart.html', checkAdmin, function(req, res, next) {
  	var id = req.params.id;
@@ -34,7 +32,6 @@ router.get('/:id/thanh-toan-cart.html',checkAdmin, function(req, res, next) {
  	});
 });
 
-
 router.get('/:id/xoa-cart.html', checkAdmin, function(req, res, next) {
  	var id = req.params.id;
  	Cart.findOneAndRemove({_id: id}, function(err, offer){
@@ -51,7 +48,5 @@ function checkAdmin(req, res, next){
       res.redirect('/admin/dang-nhap.html');
     }
 }
-
-
 
 module.exports = router;

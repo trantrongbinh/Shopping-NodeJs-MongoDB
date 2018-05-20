@@ -25,13 +25,51 @@ router.get('/', function (req, res) {
    
 });
 
-router.get('/cate/:name.:id.html', function (req, res) {
-
-	Product.find({cateId: req.params.id}, function(err, data){
+/* result search */
+router.post('/ket-qua-search.html', function (req, res) {
+	var key = req.body.key;
+	console.log(key);
+	Product.find({$text: {$search: key}}).then(function(product){
+		console.log(product);
 		Cate.find().then(function(cate){
-			res.render('site/page/cate',{product: data, cate: cate});
+			res.render('site/page/search',{key: key, product: product, cate: cate});
 		});
 	});
+   
+});
+
+// router.get('/cate/:name.:id.html', function (req, res) {
+
+// 	Product.find({cateId: req.params.id}, function(err, data){
+// 		console.log(data);
+// 		Cate.find().then(function(cate){
+// 			res.render('site/page/cate',{product: data, cate: cate});
+// 		});
+// 	});
+// });
+
+router.get('/cate/:name.:id.html/page=:page', function (req, res, next) {
+    var perPage = 2; /* perPage - số dòng dữ liệu trên mỗi trang */
+    var page = req.params.page || 1; /* page - biến chứa số trang hiện tại (Lấy từ request) */
+    Product.find({cateId: req.params.id})
+    .skip((perPage * page) - perPage) /* mỗi trang chúng ta cần phải bỏ qua ((perPage * page) - perPage) giá trị (trên trang đầu tiên giá trị của bỏ qua phải là 0): */
+    .limit(perPage)
+    .exec(function(err, data_products) { 
+    	console.log(data_products);
+        Product.find({cateId: req.params.id}).count().exec(function(err, count) { /* dùng count để tính số trang */
+            console.log(count);
+            if (err) throw err;
+            //var data_products_json = JSON.stringify(data_products); /* chuyển sang chuỗi JSON hợp lệ */
+            Cate.find().then(function(cate){
+				res.render('site/page/cate',{
+					product : data_products,
+	                current: page,
+	                pages: Math.ceil(count / perPage),
+					cate: cate
+				});
+			});
+        });
+    });
 });
 
 router.get('/chi-tiet/:name.:id.:cate.html', function (req, res) {

@@ -1,6 +1,5 @@
 <% include ../layout/header.ejs %>
     <!-- Header End -->
-
     <div id="maincontainer">
         <!-- Slider Start-->
         <section class="slider">
@@ -8,16 +7,16 @@
                 <div class="flexslider" id="mainslider">
                     <ul class="slides">
                         <li>
-                            <img src="/img/banner1.jpg" alt="" />
+                            <img src="/img/banner/banner1.jpg" alt="" />
                         </li>
                         <li>
-                            <img src="/img/banner2.jpg" alt="" />
+                            <img src="/img/banner/banner2.jpg" alt="" />
                         </li>
                         <li>
-                            <img src="/img/banner1.jpg" alt="" />
+                            <img src="/img/banner/banner3.jpg" alt="" />
                         </li>
                         <li>
-                            <img src="/img/banner2.jpg" alt="" />
+                            <img src="/img/banner/banner4.jpg" alt="" />
                         </li>
                     </ul>
                 </div>
@@ -50,7 +49,8 @@
                 <div class="container">
                     <h1 class="heading1"><span class="maintext"> <%= ca.name%> </span><span class="subtext"> See Our Most featured Products</span></h1>
                     <ul class="thumbnails">
-                        <%  product.forEach(function(pro){ if(id < 4) { if(pro.cateId == ca._id){ id ++ ; %>
+                        <div class="owl-carousel owl-theme">
+                        <%  product.forEach(function(pro){ if(id < 8) { if(pro.cateId == ca._id){ id ++ ; %>
                             <li class="span3">
                                 <a class="prdocutname" href="product.html">
                                     <%= pro.name %>
@@ -68,16 +68,12 @@
                                     </div>
                                 </div>
                             </li>
-                            <% }}})%>
+                        <% }}})%>
+                        </div>
                     </ul>
                 </div>
             </section>
             <% })%>
-                <!-- Latest Product-->
-                <!-- Footer -->
-                <% include ../layout/footer.ejs %>
-                    <script type="text/javascript">
-                    $('.carousel').carousel({
-                        interval: 100000
-                    })
-                    </script>
+            <!-- Latest Product-->
+            <!-- Footer -->
+            <% include ../layout/footer.ejs %>
